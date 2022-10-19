@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
 import { Button, Form, Row, Col } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { changeUser } from '../redux/userSlice'
 
 export const Login = () => {
   const [name, setName] = useState('')
+  const dispatch = useDispatch()
+
+  const handleLogin = () => {
+    dispatch(changeUser(name))
+  }
 
   return (
     <Form>
@@ -16,7 +23,7 @@ export const Login = () => {
           />
         </Col>
         <Col sm={6}>
-          <Button onClick={() => {}}>Login</Button>
+          <Button onClick={handleLogin}>Login</Button>
         </Col>
       </Row>
       <hr />
